@@ -42,3 +42,8 @@ We will need to install the next dependencies
 ```
 pnpm add -D vitest @testing-library/react
 ```
+
+- useEffect
+- custom hooks
+- Context
+- Redux

@@ -1,26 +1,9 @@
-import { useState } from "react";
-import { Task, TodoList } from "./components/TodoList/TodoList";
+import { Todo } from "./components/Todo";
 
-function App() {
-  const [tasks, setTasks] = useState<Task[]>([]);
-
-  const handleAddTask = (newTask: string) => {
-    setTasks([...tasks, { name: newTask, id: crypto.randomUUID() }]);
-  };
-
-  const handleRemoveTaskByIndex = (idx: number) => {
-    setTasks(tasks.filter((_, index) => index !== idx));
-  };
-
+export default function App() {
   return (
     <div>
-      <TodoList
-        tasks={tasks}
-        handleAddTask={handleAddTask}
-        handleRemoveTaskByIndex={handleRemoveTaskByIndex}
-      />
+      <Todo />
     </div>
   );
 }
-
-export default App;
