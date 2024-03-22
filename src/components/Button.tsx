@@ -1,21 +1,27 @@
-import { ButtonHTMLAttributes } from "react";
+import { cva, type VariantProps } from "class-variance-authority";
 
-type ButtonVariants = keyof typeof variants;
+const button = cva("px-4 py-2 text-xl rounded", {
+  variants: {
+    variant: {
+      primary: "bg-yellow-500 text-black",
+      secondary: "bg-green-500 text-black",
+      outlined: "border-2 border-white text-white",
+    },
+  },
+  defaultVariants: {
+    variant: "outlined",
+  },
+});
 
-type ButtonProps = {
-  variant: ButtonVariants;
-  children: React.ReactNode;
-} & Omit<ButtonHTMLAttributes<HTMLButtonElement>, "className">;
-
-const variants = {
-  primary: "bg-yellow-500 rounded px-5 py-2",
-  secondary: "bg-green-500 rounded px-5 py-2",
-  outlined: "border-2 border-white text-white rounded px-5 py-2",
-};
+type ButtonProps = Omit<
+  React.ButtonHTMLAttributes<HTMLButtonElement>,
+  "className"
+> &
+  VariantProps<typeof button>;
 
 function Button({ variant, children, ...rest }: ButtonProps) {
   return (
-    <button className={`${variants[variant]}`} {...rest}>
+    <button className={button({ variant })} {...rest}>
       {children}
     </button>
   );

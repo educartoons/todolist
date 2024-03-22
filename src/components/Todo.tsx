@@ -1,7 +1,7 @@
-import { ChangeEvent, useEffect, useState } from "react";
+import { ChangeEvent, useState } from "react";
 import { TodoList } from "./TodoList";
 import { TodoForm } from "./TodoForm";
-import { useLocalStorage } from "../hooks/useLocalStorage";
+import { useTodoContext } from "../context/todoContext";
 
 export type Task = {
   id: string;
@@ -9,24 +9,11 @@ export type Task = {
 };
 
 function Todo() {
-  const [tasks, setTasks] = useLocalStorage("todo", [] as Task[]);
-  const [task, setTask] = useState("");
-
-  const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
-    setTask(event.target.value);
-  };
-
-  const handleAdd = () => {
-    const newTask = {
-      id: crypto.randomUUID(),
-      value: task,
-    };
-    setTasks([...(tasks as Task[]), newTask]);
-  };
+  const { tasks } = useTodoContext();
 
   return (
     <div className="pt-10">
-      <TodoForm task={task} handleAdd={handleAdd} handleChange={handleChange} />
+      <TodoForm />
       <TodoList tasks={tasks as Task[]} />
     </div>
   );

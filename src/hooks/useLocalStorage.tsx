@@ -11,6 +11,8 @@ function useLocalStorage<T>(key: string, defaultValue: T) {
           const listObj = JSON.parse(list);
           setState(listObj);
         }
+
+        // useState, useEffect, memo
       } else {
         window.localStorage.setItem(key, JSON.stringify(state));
       }
@@ -23,3 +25,5 @@ function useLocalStorage<T>(key: string, defaultValue: T) {
 }
 
 export { useLocalStorage };
+
+// useState, useEffect, memo, custom hook, composition

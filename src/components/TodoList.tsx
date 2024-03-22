@@ -6,10 +6,11 @@ type TodoListProps = {
 };
 
 function TodoList({ tasks }: TodoListProps) {
+  console.count("Rendering");
   return (
-    <ul>
+    <ul className="mt-4">
       {tasks.map((task) => (
-        <TodoTask key={task.id} value={task.value} />
+        <TodoTask key={task.id} value={task.value} id={task.id} />
       ))}
     </ul>
   );

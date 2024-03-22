@@ -1,23 +1,21 @@
-import { ChangeEvent } from "react";
+import { ChangeEvent, useState } from "react";
 import { Button } from "./Button";
+import { Input } from "./Input";
+import { useTodoContext } from "../context/todoContext";
 
-type TodoFormProps = {
-  task: string;
-  handleChange: (event: ChangeEvent<HTMLInputElement>) => void;
-  handleAdd: () => void;
-};
+function TodoForm() {
+  const [task, setTask] = useState("");
+  const { handleAddTask } = useTodoContext();
 
-function TodoForm({ task, handleAdd, handleChange }: TodoFormProps) {
+  const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
+    setTask(event.target.value);
+  };
+
   return (
     <div className="relative">
-      <input
-        className="w-full bg-zinc-800 rounded py-5 px-4 text-white text-xl"
-        onChange={handleChange}
-        value={task}
-        type="text"
-      />
+      <Input onChange={handleChange} value={task} type="text" />
       <div className="absolute top-0 right-0 pt-3 pr-3">
-        <Button variant="primary" onClick={handleAdd}>
+        <Button variant="primary" onClick={() => handleAddTask(task)}>
           Add
         </Button>
       </div>
