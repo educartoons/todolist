@@ -3,7 +3,7 @@ type TodoTaskProps = {
 };
 
 function TodoTask({ value }: TodoTaskProps) {
-  return <li>{value}</li>;
+  return <li className="text-white text-xl">{value}</li>;
 }
 
 export { TodoTask };

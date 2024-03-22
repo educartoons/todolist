@@ -25,10 +25,10 @@ function Todo() {
   };
 
   return (
-    <h2>
+    <div className="pt-10">
       <TodoForm task={task} handleAdd={handleAdd} handleChange={handleChange} />
       <TodoList tasks={tasks as Task[]} />
-    </h2>
+    </div>
   );
 }
 
