@@ -7,9 +7,14 @@ const button = cva("px-4 py-2 text-xl rounded", {
       secondary: "bg-green-500 text-black",
       outlined: "border-2 border-white text-white",
     },
+    width: {
+      regular: "w-auto",
+      full: "w-full",
+    },
   },
   defaultVariants: {
     variant: "outlined",
+    width: "regular",
   },
 });
 
@@ -19,9 +24,9 @@ type ButtonProps = Omit<
 > &
   VariantProps<typeof button>;
 
-function Button({ variant, children, ...rest }: ButtonProps) {
+function Button({ variant, width, children, ...rest }: ButtonProps) {
   return (
-    <button className={button({ variant })} {...rest}>
+    <button className={button({ variant, width })} {...rest}>
       {children}
     </button>
   );
