@@ -2,10 +2,21 @@ import { describe, test, expect } from "vitest";
 import { render, screen } from "@testing-library/react";
 import { userEvent } from "@testing-library/user-event";
 import { Todo } from "./Todo";
+import { TodoContextProvider } from "../context/todoContext";
+import { UserContextProvider } from "../context/userContext";
+import { BrowserRouter } from "react-router-dom";
 
 describe("<TodoList />", () => {
   test("should render", () => {
-    render(<Todo />);
+    render(
+      <TodoContextProvider>
+        <UserContextProvider>
+          <BrowserRouter>
+            <Todo />
+          </BrowserRouter>
+        </UserContextProvider>
+      </TodoContextProvider>
+    );
   });
 
   test("should render an input", () => {
@@ -14,7 +25,7 @@ describe("<TodoList />", () => {
   });
 
   test("should render a button with the text 'add'", () => {
-    const button = screen.queryByRole("button", { name: "add" });
+    const button = screen.queryByRole("button", { name: "Add" });
     expect(button).not.toBe(null);
   });
 
@@ -25,7 +36,7 @@ describe("<TodoList />", () => {
 
   test("should display a task when the user adds a new task", async () => {
     const input = screen.queryByRole("textbox")!;
-    const button = screen.queryByRole("button", { name: "add" })!;
+    const button = screen.getByRole("button", { name: "Add" });
 
     await userEvent.type(input, "Buy Onions");
     await userEvent.click(button);
