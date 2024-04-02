@@ -1,4 +1,5 @@
 import ErrorBoundary from "../components/ErrorBoundary";
+import Layout from "../components/Layout";
 import { Todo } from "../components/Todo";
 
 function Home() {
@@ -8,7 +9,9 @@ function Home() {
 export default function HomePage() {
   return (
     <ErrorBoundary>
-      <Home />
+      <Layout>
+        <Home />
+      </Layout>
     </ErrorBoundary>
   );
 }

@@ -1,4 +1,5 @@
 import ErrorBoundary from "../components/ErrorBoundary";
+import Layout from "../components/Layout";
 import UserInformation from "../components/UserInformation";
 
 function Profile() {
@@ -8,7 +9,9 @@ function Profile() {
 export default function ProfilePage() {
   return (
     <ErrorBoundary>
-      <Profile />
+      <Layout>
+        <Profile />
+      </Layout>
     </ErrorBoundary>
   );
 }
