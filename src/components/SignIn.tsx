@@ -4,7 +4,7 @@ import { Button } from "./Button";
 import { Input } from "./Input";
 import { useUserContext } from "../hooks/useUserContext";
 
-function Login() {
+export default function SignIn() {
   const [user, setUser] = useState("");
   const { dispatch } = useUserContext();
   const navigate = useNavigate();
@@ -29,5 +29,3 @@ function Login() {
     </div>
   );
 }
-
-export { Login };

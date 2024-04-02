@@ -2,9 +2,10 @@ import { useNavigate } from "react-router-dom";
 import { useUserContext } from "../hooks/useUserContext";
 import { Button } from "./Button";
 
-function Profile() {
+export default function UserInformation() {
   const { state: user } = useUserContext();
   const navigate = useNavigate();
+
   return (
     <div>
       <h2 className="text-white text-base mb-3">{user.username}</h2>
@@ -18,5 +19,3 @@ function Profile() {
     </div>
   );
 }
-
-export { Profile };

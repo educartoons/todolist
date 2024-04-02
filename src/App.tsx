@@ -1,8 +1,9 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import { Login } from "./components/Login";
-import { Todo } from "./components/Todo";
-import { ProtectedRoute } from "./components/ProtectedRoute";
-import { Profile } from "./components/Profile";
+import { NotFound404 } from "./components/NotFound404";
+
+import HomePage from "./pages/HomePage";
+import ProfilePage from "./pages/ProfilePage";
+import LoginPage from "./pages/LoginPage";
 
 export default function App() {
   return (
@@ -10,11 +11,10 @@ export default function App() {
       <div className="w-[500px] mx-auto">
         <BrowserRouter>
           <Routes>
-            <Route path="/login" element={<Login />} />
-            <Route path="/" element={<ProtectedRoute />}>
-              <Route path="/" element={<Todo />} />
-              <Route path="/profile" element={<Profile />} />
-            </Route>
+            <Route path="/login" element={<LoginPage />} />
+            <Route path="/" element={<HomePage />} />
+            <Route path="/profile" element={<ProfilePage />} />
+            <Route path="*" element={<NotFound404 />} />
           </Routes>
         </BrowserRouter>
       </div>
